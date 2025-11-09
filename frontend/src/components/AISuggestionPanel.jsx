@@ -2,7 +2,7 @@ const AISuggestionPanel = ({ suggestion, evaluations }) => {
   if (!suggestion) return null;
 
   return (
-    <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-5 rounded-xl mt-5 border-2 border-blue-500">
+    <div className="bg-linear-to-br from-purple-50 to-purple-100 p-5 rounded-xl mt-5 border-2 border-blue-500">
       <h3 className="text-xl font-bold text-gray-800 mb-4">🤖 AI Suggestion</h3>
       <div className="bg-white p-4 rounded-lg mb-4">
         <h4 className="text-green-600 font-semibold mb-2">🌟 Recommended Action</h4>

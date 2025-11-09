@@ -7,7 +7,7 @@ const AvailableActions = ({ actions, onTakeAction }) => {
       <div className="flex flex-col gap-3">
         {actions.length === 0 ? (
           <p className="text-center text-gray-400 italic p-5">
-            No more actions available
+            Start a game to see available actions
           </p>
         ) : (
           actions.map((action) => (
