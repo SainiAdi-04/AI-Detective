@@ -105,10 +105,19 @@ function App() {
       const data = await aiService.autoSolve(sessionId);
       if (data.success) {
         setAlgorithmSteps(data.solution_path || []);
-        alert(`AI solved in ${data.steps_taken} steps with cost ${data.total_cost}`);
+        setWinner('ai');
+        setTimeout(() => {
+          setModalResult({
+            correct: false,
+            winner: 'AI Detective',
+            solution: data.solution,
+            message: `AI auto-solved in ${data.steps_taken} steps with cost ${data.total_cost}`
+          });
+        }, 500);
       }
     } catch (error) {
       console.error("Error auto-solving:", error);
+      alert("Failed to auto-solve. Please check the backend.");
     }
   };
 
