@@ -10,6 +10,7 @@ import AccusationPanel from "./components/AccusationPanel";
 import ResultModal from "./components/ResultModal";
 import AlgorithmVisualization from "./components/AlgorithmVisualization";
 import { gameService, aiService } from "./services/api";
+import CutoutTextLoader from "./components/Loader";
 
 function App() {
   const [sessionId] = useState("user-session-" + Date.now());
@@ -23,6 +24,8 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [raceMode] = useState(true);
   const [winner, setWinner] = useState(null);
+  const [aiThinking, setAIThinking] = useState(false);
+
 
   const handleStartGame = async () => {
     try {
@@ -51,6 +54,16 @@ function App() {
         setHumanHistory((prev) => [data.evidence, ...prev]);
         setAlgorithmSteps(data.csp_result?.steps || []);
       }
+      // 🚀 Start AI turn automatically
+      setTimeout(() => {
+        setAIThinking(true);
+
+        // optional delay before AI move (e.g., 1.5 sec)
+        setTimeout(async () => {
+          await handleAIMakeMove();
+          setAIThinking(false);
+        }, 3000)
+      }, 5000)
     } catch (error) {
       console.error(error);
     }
@@ -110,6 +123,9 @@ function App() {
   return (
     <div className="min-h-screen bg-linear-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#2a2a2a] p-5 text-white">
       <div className="max-w-[1600px] mx-auto">
+        {aiThinking && (
+          <CutoutTextLoader />
+        )}
 
         <Header raceMode={raceMode} winner={winner} />
 
