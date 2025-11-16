@@ -29,8 +29,7 @@
 
 const GameControls = ({ onStartGame, onAIMakeMove, onAutoSolve, gameStarted, winner }) => {
   return (
-    <div className="flex gap-4 justify-center mb-8 flex-wrap">
-
+    <div className="flex gap-4 justify-center mb-5 flex-wrap">
       {/* Start Button */}
       <button
         onClick={onStartGame}
@@ -40,7 +39,7 @@ const GameControls = ({ onStartGame, onAIMakeMove, onAutoSolve, gameStarted, win
         shadow-[0_0_15px_rgba(0,255,255,0.15)]
         hover:shadow-[0_0_25px_rgba(0,255,255,0.35)]
         hover:-translate-y-1 hover:border-cyan-300 
-        transition-all duration-300">
+        transition-all duration-300 cursor-pointer">
         🎮 Start New Race
       </button>
 
@@ -53,7 +52,7 @@ const GameControls = ({ onStartGame, onAIMakeMove, onAutoSolve, gameStarted, win
         hover:bg-white/10 hover:border-cyan-300 hover:text-cyan-300
         hover:shadow-[0_0_22px_rgba(0,255,255,0.35)]
         hover:-translate-y-1 transition-all duration-300
-        disabled:opacity-40 disabled:cursor-not-allowed">
+        disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
         🤖 AI Make Move
       </button>
 
@@ -67,7 +66,7 @@ const GameControls = ({ onStartGame, onAIMakeMove, onAutoSolve, gameStarted, win
         hover:shadow-[0_0_25px_rgba(100,100,255,0.4)]
         hover:-translate-y-1 hover:border-indigo-300 
         transition-all duration-300
-        disabled:opacity-40 disabled:cursor-not-allowed">
+        disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
         ⚡ Watch AI Auto-Solve
       </button>
     </div>

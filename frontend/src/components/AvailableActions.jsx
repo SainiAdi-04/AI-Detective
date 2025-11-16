@@ -1,56 +1,39 @@
 const AvailableActions = ({ actions, onTakeAction, disabled }) => {
   return (
-    <div className="backdrop-blur-xl">
-      <h2 className="text-lg font-bold text-cyan-300 mb-4 flex items-center gap-2">
+    <div className="bg-white/5 p-4 rounded-xl">
+      <h3 className="text-lg font-semibold text-white mb-3">
         📋 Available Evidence
-      </h2>
-
-      {disabled && (
-        <div className="mb-3 p-2 bg-yellow-500/20 border border-yellow-500/50 rounded-lg text-yellow-200 text-sm text-center">
-          ⏳ Waiting for AI Detective's turn...
-        </div>
-      )}
-
-      {actions.length === 0 ? (
-        <p className="text-center text-gray-400 italic py-6">
-          Start investigating to reveal clues...
-        </p>
-      ) : (
-        <div className="flex flex-col gap-4">
-          {actions.map((action) => (
+      </h3>
+      <div className="flex flex-col gap-3">
+        {actions.length === 0 ? (
+          <p className="text-center text-gray-400 italic p-5">
+            Start investigating to see available clues
+          </p>
+        ) : (
+          actions.map((action) => (
             <div
               key={action.id}
-              className="p-4 rounded-xl bg-cyan-600/10 border border-cyan-400/30 shadow-[0_0_12px_rgba(0,255,255,0.08)] hover:shadow-[0_0_18px_rgba(0,255,255,0.35)] transition-all duration-300"
+              className="bg-blue-500/10 p-3 rounded-lg border border-blue-500/30 hover:translate-x-1 transition-transform duration-200"
             >
               <div className="flex justify-between items-center mb-2">
-                <span className="font-semibold text-gray-100 text-sm tracking-wide">
+                <span className="font-semibold text-white text-sm">
                   {action.action}
                 </span>
-
-                <span className="px-3 py-1 rounded-full bg-yellow-400/20 text-yellow-300 font-bold text-xs border border-yellow-400/40">
+                <span className="bg-yellow-500 text-black px-2 py-1 rounded-full text-xs font-bold">
                   💰 {action.cost}
                 </span>
               </div>
-
               <button
                 onClick={() => onTakeAction(action.id)}
                 disabled={disabled}
-                className="
-                  w-full py-2 rounded-lg text-sm font-semibold
-                  bg-linear-to-r from-cyan-400 to-blue-500
-                  hover:from-cyan-300 hover:to-blue-400
-                  transition-all duration-300
-                  shadow-[0_0_12px_rgba(0,200,255,0.4)]
-                  hover:shadow-[0_0_20px_rgba(0,200,255,0.7)]
-                  disabled:opacity-40 disabled:cursor-not-allowed
-                "
+                className="w-full bg-blue-500 text-white px-3 py-2 rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 🔍 Investigate This
               </button>
             </div>
-          ))}
-        </div>
-      )}
+          ))
+        )}
+      </div>
     </div>
   );
 };

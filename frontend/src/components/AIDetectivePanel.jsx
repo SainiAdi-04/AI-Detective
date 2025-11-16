@@ -27,19 +27,12 @@ const AIDetectivePanel = ({ aiState, aiHistory, onMakeMove, disabled }) => {
           )}
         </div>
       ) : (
-        <div className=" border-purple-400/30 text-center py-6">
-          <p className="text-gray-400">AI is ready to start investigating…</p>
-
+        <div className="bg-white/5 p-6 rounded-xl text-center text-gray-400">
+          <p>AI is ready to start investigating...</p>
           <button
             onClick={onMakeMove}
             disabled={disabled}
-            className="
-              mt-4 px-6 py-3 rounded-xl font-semibold text-white
-              bg-linear-to-r from-purple-400 to-fuchsia-500
-              hover:opacity-90 transition-all duration-300
-              shadow-[0_0_15px_rgba(180,0,255,0.45)]
-              disabled:opacity-40 disabled:cursor-not-allowed
-            "
+            className="mt-4 px-6 py-3 bg-purple-500 text-white rounded-lg font-semibold hover:bg-purple-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           >
             🤖 Let AI Start
           </button>

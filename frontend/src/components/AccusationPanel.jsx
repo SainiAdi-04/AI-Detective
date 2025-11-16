@@ -19,86 +19,65 @@ const AccusationPanel = ({ onMakeAccusation, disabled = false }) => {
   };
 
   return (
-    <div className="backdrop-blur-xl bg-white/5 border border-cyan-400/30 rounded-2xl p-6 shadow-[0_0_20px_rgba(0,255,255,0.18)] mt-8">
-      <h2 className="text-2xl font-bold mb-6 tracking-wide text-cyan-300 flex items-center gap-2">
+    <div className="bg-white/5 backdrop-blur-xl p-6 rounded-2xl shadow-lg border border-yellow-400/30">
+      <h2 className="text-2xl font-bold text-yellow-300 mb-5 pb-2 border-b-2 border-yellow-500/30">
         ⚖️ Make Your Accusation
       </h2>
-
-      {disabled && (
-        <div className="mb-4 p-3 bg-yellow-500/20 border border-yellow-500/50 rounded-lg text-yellow-200 text-center">
-          ⏳ Waiting for AI Detective's turn...
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="flex flex-col gap-2">
+          <label className="font-semibold text-gray-200">Suspect:</label>
+          <select
+            value={suspect}
+            onChange={(e) => setSuspect(e.target.value)}
+            className="p-3 border-2 border-gray-600 rounded-lg focus:border-blue-500 focus:outline-none bg-gray-800 text-white cursor-pointer"
+          >
+            <option value="">Select Suspect</option>
+            {suspects.map((o) => (
+              <option key={o} value={o}>
+                {o}
+              </option>
+            ))}
+          </select>
         </div>
-      )}
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <AccuseSelect
-          label="Suspect"
-          value={suspect}
-          setValue={setSuspect}
-          options={suspects}
-          disabled={disabled}
-        />
-
-        <AccuseSelect
-          label="Weapon"
-          value={weapon}
-          setValue={setWeapon}
-          options={weapons}
-          disabled={disabled}
-        />
-
-        <AccuseSelect
-          label="Location"
-          value={location}
-          setValue={setLocation}
-          options={locations}
-          disabled={disabled}
-        />
+        <div className="flex flex-col gap-2">
+          <label className="font-semibold text-gray-200">Weapon:</label>
+          <select
+            value={weapon}
+            onChange={(e) => setWeapon(e.target.value)}
+            className="p-3 border-2 border-gray-600 rounded-lg focus:border-blue-500 focus:outline-none bg-gray-800 text-white cursor-pointer"
+          >
+            <option value="">Select Weapon</option>
+            {weapons.map((o) => (
+              <option key={o} value={o}>
+                {o}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex flex-col gap-2">
+          <label className="font-semibold text-gray-200">Location:</label>
+          <select
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="p-3 border-2 border-gray-600 rounded-lg focus:border-blue-500 focus:outline-none bg-gray-800 text-white cursor-pointer"
+          >
+            <option value="">Select Location</option>
+            {locations.map((o) => (
+              <option key={o} value={o}>
+                {o}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-
       <button
         onClick={handleAccuse}
-        disabled={disabled}
-        className={`
-          w-full mt-6 px-6 py-4 rounded-xl font-bold text-lg
-          bg-linear-to-r from-rose-500 to-red-600
-          hover:from-red-500 hover:to-rose-600
-          transition-all duration-300
-          shadow-[0_0_18px_rgba(255,90,90,0.4)]
-          hover:shadow-[0_0_25px_rgba(255,90,90,0.7)]
-          ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-        `}
+        className="w-full mt-5 bg-red-500 text-white px-6 py-4 rounded-lg font-bold text-lg hover:bg-red-600 transition-colors duration-300 shadow-lg cursor-pointer"
       >
-        🎯 Make Accusation
+        🎯 Make Accusation!
       </button>
     </div>
   );
 };
 
 export default AccusationPanel;
-
-// 🔹 SUB-COMPONENT — CLEAN SELECT BOX
-const AccuseSelect = ({ label, value, setValue, options, disabled }) => (
-  <div className="flex flex-col gap-3">
-    <label className="text-gray-300 font-semibold">{label}:</label>
-
-    <select
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-      disabled={disabled}
-      className={`
-        p-3 rounded-lg bg-black/30 border border-white/20 text-gray-200
-        focus:border-cyan-300 focus:ring-2 focus:ring-cyan-400/40
-        transition-all duration-300 
-        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
-      `}
-    >
-      <option value="">Select {label}</option>
-      {options.map((o) => (
-        <option key={o} value={o}>
-          {o}
-        </option>
-      ))}
-    </select>
-  </div>
-);

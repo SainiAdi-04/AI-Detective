@@ -27,9 +27,9 @@ const ResultModal = ({ isOpen, onClose, result, humanState, aiState }) => {
         {/* CLOSE BUTTON */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-3 text-2xl text-gray-300 hover:text-white"
+          className="absolute right-5 top-4 text-3xl text-gray-400 hover:text-black cursor-pointer transition-colors"
         >
-          ✖
+          &times;
         </button>
 
         {/* AI WINS */}
@@ -84,14 +84,10 @@ const ResultModal = ({ isOpen, onClose, result, humanState, aiState }) => {
             </p>
 
             <button
-              onClick={onClose}
-              className="
-                px-6 py-3 rounded-xl font-semibold text-white
-                bg-linear-to-r from-cyan-400 to-blue-500
-                hover:shadow-[0_0_20px_rgba(0,200,255,0.6)] transition
-              "
+              onClick={() => window.location.reload()}
+              className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 cursor-pointer transition-colors"
             >
-              🔍 Continue Investigation
+              Continue Investigation
             </button>
           </>
         )}
