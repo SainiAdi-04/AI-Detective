@@ -2,7 +2,7 @@
 ### CSP-Based Investigation System with Competitive AI
 
 **Course**: CSL304 - Artificial Intelligence  
-**Project Type**: AI Detective Game with CSP & Search Algorithms  
+**Project Topic**: AI Detective Game with CSP & Search Algorithms  
 
 ### 👥 Team Members
 | Name | Roll Number | Email |
