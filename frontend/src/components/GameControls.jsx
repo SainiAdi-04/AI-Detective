@@ -57,7 +57,7 @@ const GameControls = ({ onStartGame, onAIMakeMove, onAutoSolve, gameStarted, win
       </button>
 
       {/* Auto-Solve Button */}
-      <button
+      {/* <button
         onClick={onAutoSolve}
         disabled={!gameStarted || !!winner}
         className="px-8 py-4 rounded-2xl font-semibold text-lg 
@@ -68,7 +68,7 @@ const GameControls = ({ onStartGame, onAIMakeMove, onAutoSolve, gameStarted, win
         transition-all duration-300
         disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
         ⚡ Watch AI Auto-Solve
-      </button>
+      </button> */}
     </div>
   );
 };
